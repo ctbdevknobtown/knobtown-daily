@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Knobtown Daily | March 3, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+  /* === RESET === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* === BASE === */
+  html {
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #FFFFFF;
+    color: #121212;
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    line-height: 1.75;
+  }
+
+  /* === OUTER FRAME === */
+  .page-frame {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* === MASTHEAD === */
+  .masthead-bar {
+    border-bottom: 1px solid #E2E2E2;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    color: #999999;
+    letter-spacing: 0.3px;
+  }
+
+  .masthead-bar a { color: #999; text-decoration: none; }
+
+  .masthead {
+    text-align: center;
+    padding: 20px 0 16px;
+    border-bottom: 2px solid #121212;
+  }
+
+  .masthead-title {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 3.2rem;
+    letter-spacing: -0.5px;
+    color: #121212;
+    line-height: 1;
+  }
+
+  .masthead-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    color: #999;
+    margin-top: 8px;
+  }
+
+  .dateline-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #E2E2E2;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    color: #999;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .dateline-bar .dot { color: #CCC; }
+
+  /* === CONTENT COLUMN === */
+  .content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  /* === SECTION STRUCTURE === */
+  .section {
+    padding: 32px 0 0;
+  }
+
+  .section + .section {
+    border-top: 1px solid #E2E2E2;
+    margin-top: 32px;
+  }
+
+  .section-label {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #121212;
+    margin-bottom: 16px;
+  }
+
+  /* === THE LEAD === */
+  .lead-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #121212;
+    margin-bottom: 8px;
+  }
+
+  .lead-deck {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .lead-body p { margin-bottom: 16px; }
+
+  .lead-body p:first-of-type::first-letter {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.4rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.78;
+    margin: 4px 6px 0 -2px;
+    color: #121212;
+  }
+
+  /* === SOURCE LINKS === */
+  .source-note {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.65rem;
+    color: #999;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  .source-note a { color: #666; text-decoration: underline; text-decoration-color: #DDD; text-underline-offset: 2px; border-bottom: none; }
+  .source-note a:hover { color: #121212; text-decoration-color: #121212; }
+
+  /* === VERTICAL TAGS === */
+  .tag {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* === TODAY ITEMS === */
+  .today-item {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #E2E2E2;
+  }
+
+  .today-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .today-item h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #121212;
+    margin: 2px 0 8px;
+  }
+
+  .today-item p { margin-bottom: 6px; font-size: 0.88rem; line-height: 1.7; }
+
+  /* === KANSAS CITY === */
+  .kc-item {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E2E2E2;
+  }
+
+  .kc-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .kc-item h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #121212;
+    margin: 2px 0 6px;
+  }
+
+  .kc-item p { margin-bottom: 6px; font-size: 0.85rem; line-height: 1.7; }
+
+  /* === WEATHER === */
+  .weather-section {
+    margin-top: 32px;
+    border-top: 1px solid #E2E2E2;
+    padding-top: 20px;
+  }
+
+  .weather-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .weather-icon-wrap {
+    flex-shrink: 0;
+  }
+
+  .weather-icon-wrap svg {
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .weather-text {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .weather-text .weather-temp {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+    color: #121212;
+  }
+
+  .weather-link {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .weather-link a {
+    color: #999;
+    text-decoration: underline;
+    text-decoration-color: #DDD;
+    text-underline-offset: 2px;
+  }
+
+  .weather-link a:hover { color: #121212; text-decoration-color: #121212; }
+
+  /* === THE ARGUMENTS === */
+  .arguments-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #121212;
+    margin-bottom: 6px;
+  }
+
+  .arguments-deck {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.78rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .arguments-body p { margin-bottom: 16px; font-size: 0.9rem; }
+
+  .arguments-body .position-name {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #121212;
+    display: block;
+    margin-bottom: 4px;
+    margin-top: 24px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E2E2E2;
+  }
+
+  .arguments-body .position-name:first-of-type { margin-top: 0; }
+
+  /* === LINKS (Cowen-style curated) === */
+  .link-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #E2E2E2;
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .link-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .link-item a.link-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #121212;
+    text-decoration: underline;
+    text-decoration-color: #CCC;
+    text-underline-offset: 2px;
+    border-bottom: none;
+  }
+  .link-item a.link-title:hover { color: #333; text-decoration-color: #333; }
+
+  .link-source {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-left: 4px;
+  }
+
+  .link-quip { color: #555; margin-top: 3px; display: block; }
+
+  /* === WRITER TO KNOW === */
+  .writer-box {
+    background: #F7F7F5;
+    border: 1px solid #E2E2E2;
+    padding: 16px 20px;
+    margin-top: 12px;
+  }
+
+  .writer-box h4 {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #121212;
+    margin-bottom: 8px;
+  }
+
+  .writer-box .writer-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #121212;
+  }
+
+  .writer-box .writer-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 4px;
+  }
+
+  /* === EDITORIAL DECISIONS (collapsible) === */
+  .editorial-decisions {
+    margin-top: 32px;
+    border-top: 1px solid #E2E2E2;
+    padding-top: 20px;
+  }
+
+  .editorial-decisions summary {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .editorial-decisions summary::-webkit-details-marker { display: none; }
+
+  .editorial-decisions .ed-body {
+    margin-top: 14px;
+    font-size: 0.75rem;
+    line-height: 1.65;
+    color: #777;
+  }
+
+  .editorial-decisions .ed-body p { margin-bottom: 10px; }
+  .editorial-decisions .ed-body strong { color: #444; font-weight: 600; }
+
+  /* === GLOBAL LINKS === */
+  a { color: #121212; text-decoration: none; border-bottom: none; }
+  a:hover { color: #555; }
+
+  /* === FOOTER === */
+  .footer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    border-top: 2px solid #121212;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #121212;
+  }
+
+  .footer-meta {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    color: #999;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    html { font-size: 18px; }
+    .masthead-title { font-size: 2.8rem; }
+    .lead-headline { font-size: 1.7rem; }
+    .arguments-headline { font-size: 1.2rem; }
+    .lead-body p:first-of-type::first-letter { font-size: 2.8rem; }
+  }
+
+  @media (max-width: 480px) {
+    html { font-size: 17px; }
+    .page-frame { padding: 0 16px; }
+    .masthead-title { font-size: 2.4rem; }
+    .lead-headline { font-size: 1.5rem; }
+    .masthead-bar { flex-direction: column; gap: 2px; text-align: center; }
+    .dateline-bar { flex-direction: column; gap: 2px; }
+  }
+
+  /* === DARK MODE === */
+  @media (prefers-color-scheme: dark) {
+    body { background: #111; color: #D0D0D0; }
+
+    /* Global links: light blue for readability on dark */
+    a { color: #8AB4F8; text-decoration-color: #555; }
+    a:hover { color: #C2DBFF; text-decoration-color: #C2DBFF; }
+
+    /* Masthead */
+    .masthead-title { color: #E5E5E5; }
+    .masthead-subtitle { color: #777; }
+    .masthead { border-bottom-color: #555; }
+    .masthead-bar, .dateline-bar { border-bottom-color: #2A2A2A; color: #666; }
+    .masthead-bar a { color: #666; }
+
+    /* Section structure */
+    .section + .section { border-top-color: #2A2A2A; }
+    .section-label { color: #E5E5E5; }
+
+    /* Headlines and decks */
+    .lead-headline, .today-item h3, .arguments-headline, .kc-item h3 { color: #E5E5E5; }
+    .lead-deck, .arguments-deck { color: #888; }
+    .lead-body p:first-of-type::first-letter { color: #E5E5E5; }
+
+    /* Tags */
+    .tag { color: #888; }
+
+    /* Source notes */
+    .source-note { color: #666; }
+    .source-note a { color: #8AB4F8; text-decoration-color: #444; }
+    .source-note a:hover { color: #C2DBFF; text-decoration-color: #C2DBFF; }
+
+    /* Body text links (arguments, lead, today, kc) */
+    .lead-body a, .today-item a, .kc-item a, .arguments-body a { color: #8AB4F8; text-decoration-color: #555; }
+    .lead-body a:hover, .today-item a:hover, .kc-item a:hover, .arguments-body a:hover { color: #C2DBFF; }
+    .arguments-body p { color: #BBB; }
+    .arguments-body .position-name { color: #E5E5E5; border-bottom-color: #2A2A2A; }
+
+    /* Today + KC items */
+    .today-item { border-bottom-color: #2A2A2A; }
+    .kc-item { border-bottom-color: #2A2A2A; }
+
+    /* Links section */
+    .link-item { border-bottom-color: #2A2A2A; }
+    .link-item a.link-title { color: #8AB4F8; text-decoration-color: #444; }
+    .link-item a.link-title:hover { color: #C2DBFF; text-decoration-color: #C2DBFF; }
+    .link-quip { color: #999; }
+    .link-source { color: #666; }
+
+    /* Briefing nav */
+    .briefing-nav p { color: #999; }
+    .briefing-nav a { color: #8AB4F8; text-decoration-color: #555; }
+    .briefing-nav a:hover { color: #C2DBFF; }
+
+    /* Writer box */
+    .writer-box { background: #1A1A1A; border-color: #2A2A2A; }
+    .writer-box .writer-name { color: #E5E5E5; }
+    .writer-box .writer-desc { color: #999; }
+    .writer-box .writer-desc a { color: #8AB4F8; }
+    .writer-box h4 { color: #E5E5E5; }
+
+    /* Editorial decisions */
+    .editorial-decisions { border-top-color: #2A2A2A; }
+    .editorial-decisions summary { color: #666; }
+    .editorial-decisions .ed-body { color: #666; }
+    .editorial-decisions .ed-body strong { color: #888; }
+
+    /* Footer */
+    .footer { border-top-color: #555; }
+    .footer-name { color: #E5E5E5; }
+    .footer-meta { color: #666; }
+
+    /* Weather */
+    .weather-section { border-top-color: #2A2A2A; }
+    .weather-text { color: #BBB; }
+    .weather-text .weather-temp { color: #E5E5E5; }
+    .weather-link a { color: #8AB4F8; text-decoration-color: #444; }
+    .weather-link a:hover { color: #C2DBFF; text-decoration-color: #C2DBFF; }
+
+    /* Edition toggle */
+    .edition-toggle label { color: #999; }
+    .edition-toggle label:hover { color: #E5E5E5; }
+    .edition-toggle .active { color: #E5E5E5; border-bottom-color: #E5E5E5; }
+  }
+
+  /* === THE BRIEFING (summary nav) === */
+  .briefing-nav { padding: 24px 0 0; }
+
+  .briefing-nav-label {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #121212;
+    margin-bottom: 12px;
+  }
+
+  .briefing-nav p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #333;
+  }
+
+  .briefing-nav a {
+    color: #121212;
+    text-decoration: underline;
+    text-decoration-color: #CCC;
+    text-underline-offset: 2px;
+    border-bottom: none;
+  }
+
+  .briefing-nav a:hover { color: #555; text-decoration-color: #555; }
+
+  /* === EDITION TOGGLE === */
+  .edition-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  .edition-toggle label {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    cursor: pointer;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .edition-toggle label:hover { color: #333; }
+  .edition-toggle .active { color: #121212; border-bottom-color: #121212; }
+
+  /* Edition visibility */
+  [data-edition="morning"] { display: block; }
+  [data-edition="evening"] { display: none; }
+
+  body.evening [data-edition="morning"] { display: none; }
+  body.evening [data-edition="evening"] { display: block; }
+
+  /* Shared content shows in both */
+  [data-edition="both"] { display: block; }
+
+  /* === PRINT === */
+  @media print {
+    body { background: white; font-size: 11pt; }
+    .masthead-bar { display: none; }
+    .page-frame { padding: 0; }
+    .content { max-width: 100%; }
+    a { text-decoration: none; color: #121212; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-frame">
+
+  <!-- TOP BAR -->
+  <div class="masthead-bar">
+    <span>Kansas City</span>
+    <span>Edited by Claude &middot; Published by Chris Beggs</span>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <h1 class="masthead-title">The Knobtown Daily</h1>
+    <div class="masthead-subtitle">Signal Over Noise</div>
+  </header>
+
+  <!-- DATELINE -->
+  <div class="dateline-bar">
+    <span>Tuesday, March 3, 2026</span>
+    <span class="dot">&middot;</span>
+    <span>Vol. 1, No. 2</span>
+  </div>
+
+  <!-- EDITION TOGGLE -->
+  <div class="edition-toggle" role="tablist">
+    <label id="toggle-morning" class="active" role="tab" onclick="switchEdition('morning')">Morning Edition</label>
+    <label id="toggle-evening" role="tab" onclick="switchEdition('evening')">Evening Edition</label>
+  </div>
+
+</div>
+
+<div class="page-frame">
+<div class="content">
+
+  <!-- ============ MORNING BRIEFING NAV ============ -->
+  <div class="briefing-nav" data-edition="morning">
+    <div class="briefing-nav-label">Good Morning</div>
+    <p>The Iran war is <a href="#lead">widening on every axis</a>: drones hit the U.S. Embassy in Riyadh, Israel launched a ground incursion into southern Lebanon, Hezbollah declared open war, and Trump told reporters the campaign will last "four to five weeks." Six American service members are now dead. Congress is <a href="#warpowers">gearing up for a War Powers vote</a> that will almost certainly fail to override a veto but will force every member on the record. Sam Altman <a href="#altman">admitted the OpenAI Pentagon deal was "sloppy,"</a> amended the contract, and users are canceling ChatGPT subscriptions in protest. The <a href="#oil">oil scenarios are getting worse</a>, with analysts projecting $120 Brent if the Strait stays closed for weeks. Apple launched the <a href="#apple">iPhone 17e</a> to start a loaded product week. In Kansas City, the <a href="#kc">budget amendment deadline is nine days out</a> and nobody has a plan to close the $54 million gap. In the Arguments: <a href="#arguments">Should Congress use War Powers to halt the Iran campaign?</a> Plus <a href="#links">links</a> worth your time.</p>
+  </div>
+
+  <!-- ============ THE LEAD ============ -->
+  <div class="section" id="lead" data-edition="morning">
+    <div class="section-label">The Lead</div>
+
+    <h2 class="lead-headline">Iran War Widens: Drones Hit U.S. Embassy in Riyadh, Israel Invades Lebanon, Trump Says Campaign Will Last Weeks</h2>
+    <div class="lead-deck">Six American troops dead. 787 killed in Iran. Hezbollah declares open war. The Strait of Hormuz remains closed. Congress prepares a War Powers vote it will almost certainly lose.</div>
+
+    <div class="lead-body">
+      <p>Two drones struck the U.S. Embassy compound in Riyadh early Tuesday, causing what the Saudi Defense Ministry called "minor material damage" and a limited fire. The building was empty at the time, Reuters reported, and there were no casualties. But the symbolism is severe: Iran's retaliatory campaign has now reached an American diplomatic facility in the capital of Washington's most important Gulf ally. President Trump vowed retaliation. The U.S. Mission issued shelter-in-place alerts for Riyadh, Jeddah, and Dhahran.</p>
+
+      <p>Simultaneously, the Israeli military announced a ground incursion into southern Lebanon, with the 91st Division operating at what it described as "strategic points" in Lebanese territory. Hezbollah's leader declared that "the era of patience has ended" and claimed responsibility for drone and rocket attacks on three Israeli military bases. The Lebanese army pulled troops back from the border area. UNIFIL peacekeepers observed Israeli forces crossing the Blue Line before withdrawing. Israel also struck Iran's presidential office compound in Tehran and continues hitting what the IDF says are thousands of military targets across Iran. Airstrikes by the U.S. and Israel have killed at least 787 people in Iran since Saturday, according to the Red Crescent Society. Six American service members are dead, U.S. Central Command confirmed, after recovering remains of two previously unaccounted-for personnel. Secretary of State Rubio said Monday that "the hardest hits are yet to come." Trump told reporters the campaign would last "four to five weeks."</p>
+
+      <p class="source-note">Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/3/3/iran-live-news-israel-bombs-tehran-beirut-trump-says-war-to-last-4-weeks" target="_blank">Al Jazeera</a>, <a href="https://www.cnbc.com/2026/03/03/us-iran-war-live-updates.html" target="_blank">CNBC</a>, <a href="https://www.aljazeera.com/news/2026/3/3/us-embassy-in-saudi-capital-riyadh-hit-by-drones-fire-reported-ministry" target="_blank">Al Jazeera</a>, <a href="https://www.aljazeera.com/news/2026/3/3/israel-strikes-lebanons-beirut-again-hezbollah-launches-drones-at-israel" target="_blank">Al Jazeera</a>, <a href="https://www.washingtonpost.com/world/2026/03/02/mideast-iran-israel-war-civilians/" target="_blank">Washington Post</a></p>
+    </div>
+  </div>
+
+  <!-- ============ TODAY ============ -->
+  <div class="section" data-edition="morning">
+    <div class="section-label">Today</div>
+
+    <div class="today-item" id="warpowers">
+      <span class="tag tag-politics">Politics</span>
+      <h3>Congress Prepares War Powers Vote It Will Almost Certainly Lose</h3>
+      <p>Bipartisan War Powers resolutions are moving through both chambers this week. In the Senate, Democrat Tim Kaine and Republican Rand Paul are co-sponsoring a measure that would require explicit congressional authorization before further hostilities against Iran. In the House, Republican Thomas Massie and Democrat Ro Khanna have a parallel resolution to halt unauthorized military action. The coalitions are real but insufficient: both resolutions are widely expected to fall short of the two-thirds majority needed to override a presidential veto. Senate Intelligence Chairman Tom Cotton told CNN on Sunday that he expects "overwhelming support from elected Republicans" for the president's campaign. The votes will function as a political marker, forcing every member of Congress on the record about an undeclared war, but will not constrain operations.</p>
+      <p class="source-note"><a href="https://www.npr.org/2026/03/02/g-s1-112092/iran-war-powers-congress-trump" target="_blank">NPR</a>, <a href="https://time.com/7381852/iran-war-congress-war-powers-act/" target="_blank">TIME</a>, <a href="https://www.cbsnews.com/news/congress-war-powers-votes-iran-strikes/" target="_blank">CBS News</a></p>
+    </div>
+
+    <div class="today-item" id="altman">
+      <span class="tag tag-tech">Tech</span>
+      <h3>Altman Admits Pentagon Deal Was "Sloppy," Amends Contract as Users Flee ChatGPT</h3>
+      <p>OpenAI CEO Sam Altman said Monday that the company "shouldn't have rushed" its Pentagon deal and outlined contract amendments, including explicit language that "the AI system shall not be intentionally used for domestic surveillance of U.S. persons and nationals." In a post on X reposting what he described as an internal memo, Altman wrote: "We were genuinely trying to de-escalate things and avoid a much worse outcome, but I think it just looked opportunistic and sloppy." The backpedal comes amid a wave of ChatGPT subscription cancellations, with users switching to Anthropic's Claude in protest, according to The Week. The State Department, meanwhile, confirmed it is replacing the AI engine behind its internal chatbot StateChat with OpenAI's GPT-4.1, part of a broader federal migration away from Anthropic products following last week's supply-chain designation.</p>
+      <p class="source-note"><a href="https://www.cnbc.com/2026/03/03/openai-sam-altman-pentagon-deal-amended-surveillance-limits.html" target="_blank">CNBC</a>, <a href="https://www.axios.com/2026/03/03/openai-pentagon-ai-surveillance" target="_blank">Axios</a>, <a href="https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/" target="_blank">MIT Technology Review</a></p>
+    </div>
+
+    <div class="today-item" id="oil">
+      <span class="tag tag-economics">Economics</span>
+      <h3>Oil Scenarios Escalate: $120 If Hormuz Stays Closed, $200 If Iran Mines It</h3>
+      <p>Brent crude remains in the high $70s, according to CNBC, as tanker traffic through the Strait of Hormuz stays near zero. CNBC outlined three scenarios: a brief disruption resolving within days would push Brent to $85-90; a prolonged closure lasting weeks could hit $120 as global storage capacity is exhausted; and a full Iranian blockade using mines and anti-ship missiles could send prices toward $200. European natural gas futures have surged more than 40%, Al Jazeera reported. NPR projects average gasoline rising 10-30 cents per gallon nationally, with some areas seeing steeper spikes. About a third of the world's total seaborne oil exports passed through the Strait in 2025, according to energy consulting firm Kpler. The second-order effects on shipping costs, emerging market debt, and European industrial output are just starting.</p>
+      <p class="source-note"><a href="https://www.cnbc.com/2026/03/02/iran-oil-gas-prices-strait-hormuz.html" target="_blank">CNBC</a>, <a href="https://www.aljazeera.com/economy/2026/3/3/shutdown-of-hormuz-strait-raises-fears-of-soaring-oil-prices" target="_blank">Al Jazeera</a>, <a href="https://www.washingtonpost.com/business/2026/03/02/oil-prices-strait-hormuz/" target="_blank">Washington Post</a></p>
+    </div>
+
+    <div class="today-item" id="apple">
+      <span class="tag tag-tech">Tech</span>
+      <h3>Apple Launches iPhone 17e, Kicks Off Biggest Product Week in Years</h3>
+      <p>Apple announced the iPhone 17e on Monday, featuring the A19 chip, second-generation C1X modem for faster 5G, MagSafe, and doubled base storage to 256GB. Pre-orders start Wednesday, March 4, with availability March 11. The launch begins a multi-day product blitz running through March 4, with media events in New York, Shanghai, and London expected to reveal a budget MacBook with the A18 Pro chip, MacBook Pro updates with M5 Pro and M5 Max, MacBook Air M5, and refreshed iPads. The timing is notable: Apple is rolling out its most consumer-facing product cycle in a week dominated by war and energy prices.</p>
+      <p class="source-note"><a href="https://www.apple.com/newsroom/2026/03/apple-introduces-iphone-17e/" target="_blank">Apple Newsroom</a>, <a href="https://www.macrumors.com/guide/apple-products-march-2026/" target="_blank">MacRumors</a></p>
+    </div>
+  </div>
+
+  <!-- ============ KANSAS CITY ============ -->
+  <div class="section" id="kc" data-edition="morning">
+    <div class="section-label">Kansas City</div>
+
+    <div class="kc-item">
+      <h3>Nine Days Until the Budget Amendment Deadline, and No Plan to Close the Gap</h3>
+      <p>The March 12 budget amendment deadline is approaching with no public proposal to address Kansas City's $54 million structural deficit. The $2.5 billion municipal budget faces a final council vote March 26. The proposed budget includes 20.4% cuts to neighborhood services, according to The Beacon, which would hit violence prevention programs and arts funding. The three public hearings held in late February revealed residents' priorities: transit, police staffing, and housing. But the math hasn't changed. At current spending, the city exhausts reserves by 2030, and no council member has introduced an amendment that addresses the structural gap rather than rearranging line items around it.</p>
+      <p class="source-note"><a href="https://www.kcur.org/politics-elections-and-government/2026-02-25/kansas-city-budget-hearings" target="_blank">KCUR</a>, <a href="https://thebeaconnews.org/stories/2026/02/26/kansas-city-budget-transit-public-safety-arts/" target="_blank">The Beacon</a></p>
+    </div>
+
+    <div class="kc-item">
+      <h3>Gas Prices Will Hit KC Commuters Hard: No Rail, Long Drives, Low Transit Coverage</h3>
+      <p>The national gas price surge matters more in Kansas City than in cities with robust public transit. Metro KC's transit mode share is roughly 1.5%, according to Census commuting data, among the lowest of any major metro. Most workers drive alone. The BLS data showing the bottom income quintile spends 8.5% of pre-tax income on gasoline translates directly here: east-side and southern-suburb commuters driving 40+ minutes to service and warehouse jobs will feel every cent of increase at the pump. The streetcar extensions opening before the World Cup will help downtown corridors but provide limited relief for the longer commute patterns where the pain concentrates.</p>
+      <p class="source-note"><a href="https://www.cnbc.com/2026/03/02/iran-oil-gas-prices-strait-hormuz.html" target="_blank">CNBC</a>, <a href="https://www.kcur.org/housing-development-section/2025-04-28/kc-streetcar-opening-date-main-street-berkley-riverfront-expansion" target="_blank">KCUR</a></p>
+    </div>
+  </div>
+
+  <!-- ============ THE ARGUMENTS ============ -->
+  <div class="section" id="arguments" data-edition="morning">
+    <div class="section-label">The Arguments</div>
+
+    <h2 class="arguments-headline">Should Congress Use War Powers to Halt the Iran Campaign?</h2>
+    <div class="arguments-deck">Kaine-Paul and Massie-Khanna are forcing votes this week. The constitutional question is clear. The political math is harder. And the practical effects of each position are debatable.</div>
+
+    <div class="arguments-body">
+
+      <span class="position-name">The Constitutional Case for Congressional Authority</span>
+      <p>The War Powers Resolution exists because the Founders gave Congress, not the president, the power to declare war. The operation against Iran, dubbed "Epic Fury" by the administration, was launched without a congressional vote, without an Authorization for Use of Military Force, and without the kind of imminent-threat justification that even expansive readings of Article II require. Senator Kaine's consistent argument, made across both Democratic and Republican administrations, is that the precedent matters more than the policy: if a president can strike a sovereign nation's supreme leader and launch a weeks-long campaign without congressional approval, then the war powers clause is functionally dead. The bipartisan coalition (Kaine-Paul in the Senate, Massie-Khanna in the House) reflects a real, if electorally insufficient, consensus that the constitutional architecture should constrain executive war-making regardless of whether the specific war is popular.</p>
+
+      <span class="position-name">The Operational Case Against Congressional Constraint</span>
+      <p>The administration's supporters, led by Senate Intelligence Chairman Tom Cotton, argue that requiring congressional authorization in the middle of an active campaign is operationally irresponsible. Their strongest point is not constitutional but practical: the Strait of Hormuz is closed, six Americans are dead, Iran is launching drones at U.S. diplomatic facilities, and Hezbollah has opened a second front. Halting operations mid-campaign, in this framework, would signal weakness to the IRGC and embolden exactly the actors the campaign is designed to deter. Cotton's position is that the president's Article II authority as commander-in-chief encompasses the current operations, and that the War Powers Resolution itself is an unconstitutional encroachment Congress has never been willing to enforce. Critics of this view note that the same argument has been used to justify every undeclared war since Korea, and that Congress has never successfully invoked the War Powers Resolution to halt one.</p>
+
+      <span class="position-name">The Structural Realist View</span>
+      <p>Neither the constitutional hawks nor the executive-power defenders are engaging with the deeper structural problem, which TIME's analysis and several Congressional Research Service reports have identified: Congress has allowed its war-making authority to atrophy for decades, through both parties and multiple administrations. The War Powers Resolution has never successfully constrained a president. No president of either party has acknowledged its constitutionality. The votes this week will not change that dynamic. The question is whether this particular war, with its widening geography (now including Lebanon, Saudi Arabia, Bahrain, and Kuwait), its mounting American casualties, and its direct economic impact on voters at the gas pump, creates enough political pressure to change the equilibrium. History suggests it will not, but the margins may be closer than in previous votes, and the floor debate itself will produce statements that become campaign material in November.</p>
+
+    </div>
+  </div>
+
+  <!-- ============ LINKS ============ -->
+  <div class="section" id="links" data-edition="morning">
+    <div class="section-label">Links</div>
+
+    <div class="link-item">
+      <a href="https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/" target="_blank" class="link-title">"OpenAI's Compromise With the Pentagon Is What Anthropic Feared"</a> <span class="link-source">MIT Technology Review</span>
+      <span class="link-quip">The best single analysis of why the Pentagon deal, even amended, represents a structural shift in how AI companies relate to military power. The details of what "surveillance" means in the contract language matter more than Altman's apology tour.</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.npr.org/2026/03/02/g-s1-112092/iran-war-powers-congress-trump" target="_blank" class="link-title">"Congress Gears Up for Vote on Trump's War Powers in Iran"</a> <span class="link-source">NPR</span>
+      <span class="link-quip">The most thorough rundown of the Kaine-Paul and Massie-Khanna resolutions. If you care about the constitutional question of who authorizes war in America, this is the essential read today.</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.cnbc.com/2026/03/02/iran-oil-gas-prices-strait-hormuz.html" target="_blank" class="link-title">"How High Can Oil and Gas Prices Go? Here Are the Scenarios"</a> <span class="link-source">CNBC</span>
+      <span class="link-quip">Three scenarios from brief disruption ($85-90 Brent) to full Iranian blockade ($200). The chart of Hormuz dependency by country is worth bookmarking. This is the piece to send to anyone who asks "how bad can it get?"</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.axios.com/2026/03/03/iran-us-embassy-riyadh-saudi-arabia-drones" target="_blank" class="link-title">"Iran Attacks US Allies, Drones Hit American Embassy in Riyadh"</a> <span class="link-source">Axios</span>
+      <span class="link-quip">Concise, well-sourced account of the embassy strike. The detail that the building was empty at the time matters: limited damage, but the symbolic escalation of hitting a U.S. diplomatic compound in Saudi Arabia is a threshold crossed.</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.aljazeera.com/news/2026/3/3/israel-strikes-lebanons-beirut-again-hezbollah-launches-drones-at-israel" target="_blank" class="link-title">"Israeli Ground Incursion Into Lebanon as Front Boils Over"</a> <span class="link-source">Al Jazeera</span>
+      <span class="link-quip">This is the story that risks getting buried under the Iran lead. Israel has opened a ground front in Lebanon for the second time in two years. UNIFIL peacekeepers observed the crossing. The Lebanese army withdrew. This is a separate war layered on top of the Iran campaign.</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.npr.org/2026/02/26/g-s1-111783/airstrikes-afghanistan-pakistan-war" target="_blank" class="link-title">Pakistan and Afghanistan Are Still in "Open War"</a> <span class="link-source">NPR</span>
+      <span class="link-quip">Third major regional conflict running simultaneously. Pakistan's defense minister used the words "open war" last week and it has not deescalated. The global bandwidth problem is getting worse by the day.</span>
+    </div>
+
+    <div class="link-item">
+      <a href="https://www.apple.com/newsroom/2026/03/apple-introduces-iphone-17e/" target="_blank" class="link-title">Apple Introduces iPhone 17e</a> <span class="link-source">Apple Newsroom</span>
+      <span class="link-quip">The primary source for the iPhone 17e specs. A19 chip, C1X modem, 256GB base. If you're advising students or staff on device cycles, the budget MacBook coming Wednesday is the one to watch.</span>
+    </div>
+
+    <!-- WRITER TO KNOW -->
+    <div class="writer-box">
+      <h4>Writer to Know</h4>
+      <div class="writer-name">Tim Kaine</div>
+      <div class="writer-desc">Senior Senator from Virginia. Former governor, former DNC chair, 2016 vice presidential nominee. But the reason he belongs here today is narrower: Kaine has spent more than a decade making the War Powers argument that almost nobody in the Senate wants to hear. He pushed War Powers resolutions on Yemen, on Syria, on the Soleimani strike. He is not an anti-war ideologue; he voted for the AUMF. His position is procedural and constitutional: Congress should vote before America goes to war. That position has bipartisan support in principle and bipartisan opposition in practice. Today's vote is the latest test of whether the principle ever wins. <a href="https://www.kaine.senate.gov/" target="_blank">Senate.gov</a></div>
+    </div>
+  </div>
+
+  <!-- ============ EDITORIAL DECISIONS ============ -->
+  <details class="editorial-decisions" data-edition="morning">
+    <summary>Editorial Decisions</summary>
+    <div class="ed-body">
+
+      <p><strong>How We Cover the News</strong></p>
+      <p>The Knobtown Daily applies a six-month signal test: if a story won't matter in six months, it doesn't run. We cover policy over events, structural forces over breaking news, and always ground national stories in how they land in Kansas City. Every factual claim is attributed to a named source. Every link is verified. We present arguments with equal rigor on each side. The KC section tracks stories with structural consequences for the metro: budgets, housing, transit, institutions. We exclude social media reaction, celebrity commentary, horse-race polling, and event-driven coverage that won't compound. When we get something wrong or miss a perspective, we say so. The editorial voice is direct, factual, and skeptical of consensus.</p>
+
+      <p><strong>Why We Covered Today's Stories</strong></p>
+      <p><strong>The lead</strong> tracks three new developments since yesterday: the Riyadh embassy strike (symbolic threshold, even with minor physical damage), Israel's Lebanon ground incursion (a second front), and Trump's first timeline statement ("four to five weeks").</p>
+      <p><strong>War Powers</strong> forces every member of Congress on record about an undeclared war. The outcome is predictable. The debate matters constitutionally and as November campaign material.</p>
+      <p><strong>Altman/Pentagon</strong> is Day 2 of the Anthropic saga. New facts: the "sloppy" admission, contract amendments, ChatGPT cancellation wave. The narrative shifted from "Anthropic refused, OpenAI complied" to "the compliance is falling apart publicly."</p>
+      <p><strong>Oil scenarios</strong> over oil prices: yesterday we ran the price story. Today the CNBC scenario analysis frames duration risk ($85 to $200 depending on Hormuz). The scenarios, not the spot price, are the story now.</p>
+      <p><strong>Apple</strong> makes the cut narrowly, relevant to Chris's work advising students on technology.</p>
+      <p><strong>KC section</strong> is shorter today (two items) because no new KC development broke overnight. Budget deadline reframed. Gas-price angle written as a structural piece about transit dependency.</p>
+      <p><strong>Excluded:</strong> Total lunar eclipse, Travis Kelce's contract, crypto, social media war reaction.</p>
+      <p><strong>Blindspot:</strong> We still lack Iranian and Gulf state voices. As the war widens into Saudi territory, those perspectives matter more, not less.</p>
+
+    </div>
+  </details>
+
+  <!-- ============ EVENING BRIEFING NAV ============ -->
+  <div class="briefing-nav" data-edition="evening">
+    <div class="briefing-nav-label">Good Evening</div>
+    <p>The evening edition covers what developed after the morning briefing went out. On days when the news doesn't warrant a full evening update, this section will be shorter or absent. Check back after 6 PM CT.</p>
+  </div>
+
+  <!-- ============ EVENING LEAD ============ -->
+  <div class="section" data-edition="evening">
+    <div class="section-label">Evening Update</div>
+    <p style="font-size: 0.85rem; color: #666; font-style: italic;">The evening edition for March 2, 2026 will publish after 6 PM CT. Toggle back to the morning edition to read today's briefing.</p>
+  </div>
+
+  <!-- ============ WEATHER (shared) ============ -->
+  <div class="weather-section">
+    <div class="section-label">The Forecast</div>
+    <div class="weather-row">
+      <div class="weather-icon-wrap">
+        <!-- 8-bit rain cloud -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="4" y="2" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="6" y="2" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="8" y="2" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="2" y="4" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="4" y="4" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="6" y="4" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="8" y="4" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="10" y="4" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="2" y="6" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="4" y="6" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="6" y="6" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="8" y="6" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="10" y="6" width="2" height="2" fill="#D1D5DB"/>
+          <rect x="12" y="6" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="2" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="4" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="6" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="8" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="10" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <rect x="12" y="8" width="2" height="2" fill="#9CA3AF"/>
+          <!-- rain drops -->
+          <rect x="4" y="11" width="1" height="2" fill="#60A5FA"/>
+          <rect x="7" y="12" width="1" height="2" fill="#60A5FA"/>
+          <rect x="10" y="11" width="1" height="2" fill="#60A5FA"/>
+          <rect x="5" y="13" width="1" height="2" fill="#60A5FA"/>
+          <rect x="9" y="13" width="1" height="2" fill="#60A5FA"/>
+        </svg>
+      </div>
+      <div>
+        <div class="weather-text">
+          <span class="weather-temp">51&deg; / 38&deg;</span> &nbsp; Rain developing by afternoon, possible thunderstorms after 1 PM. Patchy fog in the morning. Northeast wind 3-8 mph.
+        </div>
+        <div class="weather-link"><a href="https://kc-8bit-forecast-model.vercel.app" target="_blank">Full Knobtown Forecast &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">The Knobtown Daily</div>
+    <div class="footer-meta">
+      Written from Kansas City<br>
+      Edited by Claude &middot; Published by Chris Beggs<br>
+      <span style="margin-top: 4px; display: inline-block;">Signal over noise. Every morning.</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchEdition(edition) {
+  var body = document.body;
+  var mLabel = document.getElementById('toggle-morning');
+  var eLabel = document.getElementById('toggle-evening');
+
+  if (edition === 'evening') {
+    body.classList.add('evening');
+    mLabel.classList.remove('active');
+    eLabel.classList.add('active');
+  } else {
+    body.classList.remove('evening');
+    eLabel.classList.remove('active');
+    mLabel.classList.add('active');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Auto-select evening edition after 6 PM local time
+(function() {
+  var hour = new Date().getHours();
+  if (hour >= 18) {
+    switchEdition('evening');
+  }
+})();
+</script>
+</body>
+</html>
