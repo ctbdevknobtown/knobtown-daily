@@ -1,716 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Knobtown Daily &mdash; March 5, 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mini news</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf8;
+    --quiet: rgba(26, 26, 26, 0.4);
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #faf8f4;
-      --text: #1a1611;
-      --text-secondary: #5a5040;
-      --text-light: #8a7a65;
-      --border: #d8cfc0;
-      --border-light: #e8e0d0;
-      --accent: #8B1A1A;
-      --link: #6B2020;
-      --rule: #c8b89a;
-      --topbar-bg: #1a1611;
-      --topbar-text: #d8cfc0;
-      --drop-cap-size: 4.5rem;
+      --ink: #e8e8e6;
+      --paper: #0c0c0b;
+      --quiet: rgba(232, 232, 230, 0.4);
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121010;
-        --text: #e8e0d0;
-        --text-secondary: #a89880;
-        --text-light: #7a6a55;
-        --border: #3a322a;
-        --border-light: #2a241e;
-        --accent: #c84040;
-        --link: #8AB4F8;
-        --rule: #3a322a;
-        --topbar-bg: #0a0806;
-        --topbar-text: #a89880;
-      }
-    }
+  }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+  html {
+    font-size: 19px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-    a {
-      color: var(--link);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-thickness: 1px;
-    }
-    a:hover { text-decoration-thickness: 2px; }
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* TOP BAR */
-    .topbar {
-      background: var(--topbar-bg);
-      color: var(--topbar-text);
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 7px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  ::selection {
+    background: rgba(26, 26, 26, 0.08);
+  }
 
-    /* MASTHEAD */
-    .masthead {
-      text-align: center;
-      padding: 36px 24px 20px;
-      border-bottom: 3px double var(--border);
-    }
-    .masthead-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 7vw, 5.2rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1;
-      color: var(--text);
-    }
-    .masthead-subtitle {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-top: 6px;
-    }
-    .masthead-dateline {
-      font-family: 'Source Serif 4', serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--text-secondary);
-      margin-top: 10px;
-    }
-    .masthead-rule {
-      width: 60px;
-      height: 1px;
-      background: var(--rule);
-      margin: 14px auto 0;
-    }
+  .page {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 24px;
+    flex: 1;
+  }
 
-    /* EDITION TOGGLE */
-    .edition-toggle {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      margin: 16px auto 0;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      width: fit-content;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      overflow: hidden;
-    }
-    .edition-btn {
-      padding: 6px 18px;
-      cursor: pointer;
-      border: none;
-      background: var(--bg);
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: inherit;
-      letter-spacing: inherit;
-      text-transform: inherit;
-      transition: background 0.15s, color 0.15s;
-    }
-    .edition-btn.active {
-      background: var(--text);
-      color: var(--bg);
-    }
-    .edition-btn:not(:last-child) {
-      border-right: 1px solid var(--border);
-    }
+  .space { height: 96px; }
 
-    /* CONTENT WRAPPER */
-    .content {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
-    }
+  /* --- Date with nav --- */
+  .when {
+    position: relative;
+    font-size: 0.74rem;
+    font-weight: 300;
+    color: var(--quiet);
+    text-align: center;
+    padding-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
 
-    /* BRIEFING NAV */
-    .briefing-nav {
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      padding: 18px 0;
-      margin: 24px 0;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .briefing-nav strong {
-      font-weight: 600;
-      color: var(--text);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .briefing-nav a {
-      color: var(--link);
-    }
-    .nav-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 16px;
-      margin-top: 8px;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-    }
-    .nav-items a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-items a:hover {
-      color: var(--text);
-      border-bottom-color: var(--text);
-    }
+  .when .chevron {
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 6px;
+    color: var(--quiet);
+    text-decoration: none;
+    padding: 2px;
+  }
 
-    /* SECTION LABELS */
-    .section-label {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-light);
-    }
+  .when .chevron:hover {
+    color: var(--ink);
+    text-decoration: none;
+  }
 
-    /* ARTICLE */
-    .article {
-      margin-bottom: 40px;
-    }
-    .article-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.65rem, 4vw, 2.4rem);
-      font-weight: 800;
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .article-deck {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 18px;
-      border-left: 2px solid var(--rule);
-      padding-left: 14px;
-    }
-    .article-body p {
-      margin-bottom: 1.1em;
-    }
-    .article-body p:first-child::first-letter {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--drop-cap-size);
-      font-weight: 700;
-      float: left;
-      line-height: 0.75;
-      margin-right: 6px;
-      margin-top: 8px;
-      color: var(--accent);
-    }
-    .source-note {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 12px;
-      color: var(--text-light);
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border-light);
-    }
-    .source-note a {
-      color: var(--text-light);
-    }
+  .when .chevron svg {
+    width: 14px;
+    height: 14px;
+  }
 
-    /* ALSO */
-    .also-block {
-      background: var(--border-light);
-      border-left: 3px solid var(--rule);
-      padding: 16px 18px;
-      margin-bottom: 40px;
-    }
-    .also-block .also-label {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      display: block;
-      margin-bottom: 6px;
-    }
-    .also-block .also-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .also-block p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+  .when:hover .chevron {
+    opacity: 1;
+  }
 
-    /* ARGUMENTS */
-    .arguments-section {
-      margin-bottom: 40px;
-    }
-    .arguments-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .arguments-question {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 18px;
-    }
-    .arguments-body p {
-      margin-bottom: 1.1em;
-    }
-    .position-label {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin: 28px 0 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .arguments-sources {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 12px;
-      color: var(--text-light);
-      margin-top: 20px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-light);
-      line-height: 1.7;
-    }
-    .arguments-sources a {
-      color: var(--text-light);
-    }
+  /* --- The story --- */
+  .story h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: 32px;
+  }
 
-    /* DIVIDER */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border-light);
-      margin: 36px 0;
-    }
-    .ornament {
-      text-align: center;
-      color: var(--rule);
-      font-size: 18px;
-      letter-spacing: 0.4em;
-      margin: 20px 0;
-      line-height: 1;
-    }
+  .story p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
 
-    /* LINKS SECTION */
-    .links-section {
-      margin-bottom: 40px;
-    }
-    .link-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .link-item:last-child { border-bottom: none; }
-    .link-item a {
-      font-family: 'Source Serif 4', serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--link);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .link-item a:hover { text-decoration: underline; }
-    .link-quip {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
+  .story p:last-of-type {
+    margin-bottom: 0;
+  }
 
-    /* PERSON TO KNOW */
-    .person-block {
-      background: var(--border-light);
-      padding: 20px 22px;
-      margin-bottom: 40px;
-    }
-    .person-block .person-label {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      display: block;
-      margin-bottom: 6px;
-    }
-    .person-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .person-bio {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+  .from {
+    font-size: 0.74rem;
+    font-weight: 300;
+    color: var(--quiet);
+    margin-top: 16px;
+  }
 
-    /* WEATHER */
-    .weather-block {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 16px 0;
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      margin-bottom: 40px;
-    }
-    .weather-icon {
-      flex-shrink: 0;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    .weather-text {
-      font-family: 'Source Sans 3', sans-serif;
-    }
-    .weather-temp {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.02em;
-    }
-    .weather-temp span {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--text-secondary);
-      margin-left: 4px;
-    }
-    .weather-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-    .weather-link {
-      font-size: 11px;
-      color: var(--text-light);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-    }
-    .weather-link:hover { text-decoration: underline; }
+  .from a {
+    color: var(--quiet);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
 
-    /* EVENING PLACEHOLDER */
-    .evening-note {
-      background: var(--border-light);
-      border: 1px solid var(--border);
-      padding: 16px 18px;
-      text-align: center;
-      margin-bottom: 40px;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 13px;
-      color: var(--text-light);
-      font-style: italic;
-    }
+  .from a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
 
-    /* FOOTER */
-    footer {
-      border-top: 3px double var(--border);
-      padding: 24px;
-      text-align: center;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 12px;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
-    footer .footer-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-bottom: 4px;
-    }
+  /* --- Name at the bottom --- */
+  .name {
+    text-align: center;
+    padding: 0 24px 48px;
+  }
 
-    /* EDITION VISIBILITY */
-    [data-edition="evening"] { display: none; }
-    body.evening-mode [data-edition="morning"] { display: none; }
-    body.evening-mode [data-edition="evening"] { display: block; }
+  .name button {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 0.74rem;
+    font-weight: 300;
+    color: var(--quiet);
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    padding: 0;
+    transition: color 0.3s;
+  }
 
-    @media (max-width: 600px) {
-      .topbar { font-size: 10px; padding: 6px 14px; }
-      .masthead { padding: 24px 16px 16px; }
-      .content { padding: 0 16px 48px; }
-      .briefing-nav { font-size: 13px; }
-    }
-  </style>
+  .name button:hover {
+    color: var(--ink);
+  }
+
+  /* --- The why --- */
+  .why {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  .why.open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .why-inner {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 32px 24px 0;
+    text-align: center;
+  }
+
+  .why-inner p {
+    font-size: 0.84rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--quiet);
+  }
+
+  @media (max-width: 600px) {
+    html { font-size: 18px; }
+    .when { padding-top: 80px; }
+    .space { height: 64px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <span>Kansas City</span>
-    <span>Published by Chris Beggs</span>
+<div class="page">
+
+  <div class="when" id="when">
+    <a href="#yesterday" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+    <span id="date-text"></span>
   </div>
 
-  <!-- MASTHEAD -->
-  <header class="masthead">
-    <div class="masthead-name">The Knobtown Daily</div>
-    <div class="masthead-subtitle">Less News. More Signal.</div>
-    <div class="masthead-dateline">Thursday, March 5, 2026 &middot; Morning Edition</div>
-    <div class="masthead-rule"></div>
-    <div class="edition-toggle" role="group" aria-label="Edition selector">
-      <button class="edition-btn active" onclick="setEdition('morning')" id="btn-morning">Morning</button>
-      <button class="edition-btn" onclick="setEdition('evening')" id="btn-evening">Evening</button>
+  <div class="space"></div>
+
+  <article class="story">
+    <h1>The United States is at war with Iran, and nobody voted for it</h1>
+    <p>American and Israeli forces struck targets across Iran for a fifth consecutive day Wednesday, extending an air campaign that began hours after Supreme Leader Ali Khamenei was killed March 1 in what US officials described as an Israeli intelligence operation. The Pentagon confirmed six American soldiers have been killed in a rocket attack on a logistics base in Kuwait, the first US combat deaths of the campaign.</p>
+    <p>The strikes have concentrated on Iran's nuclear infrastructure, air defenses, and Revolutionary Guard command centers. Tehran's ability to respond has been limited but not eliminated. Houthi and Hezbollah-affiliated groups launched retaliatory strikes against US assets in Iraq and the Red Sea, none causing significant damage so far.</p>
+    <p>Congress has not authorized the use of force. The White House cited Article II commander-in-chief authority and the 2001 AUMF, a legal theory several constitutional scholars have called untenable for a campaign against a sovereign state. A bipartisan group of senators introduced a war powers resolution Wednesday morning demanding a vote within 48 hours.</p>
+    <div class="from"><a href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters</a>, <a href="https://apnews.com/" target="_blank" rel="noopener">Associated Press</a>, <a href="https://www.aljazeera.com/" target="_blank" rel="noopener">Al Jazeera English</a></div>
+  </article>
+
+</div>
+
+<footer class="name">
+  <div class="space"></div>
+  <button id="toggle" aria-expanded="false">mini news</button>
+  <div class="why" id="why">
+    <div class="why-inner">
+      <p>One story per day. The one that matters. No feed, no algorithm, no attention tricks. Just the news, written clearly, sourced carefully, and then silence.</p>
     </div>
-  </header>
+  </div>
+  <div style="height: 48px;"></div>
+</footer>
 
-  <!-- MAIN CONTENT -->
-  <main class="content">
+<script>
+  const now = new Date();
+  const local = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+  const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+  document.getElementById('date-text').textContent = local.toLocaleDateString('en-US', opts);
 
-    <!-- BRIEFING NAV -->
-    <nav class="briefing-nav" aria-label="Edition briefing">
-      <strong>In This Edition</strong>
-      Day five of the US-Israel military campaign, and Iran's Assembly of Experts is moving to install Mojtaba Khamenei as Supreme Leader under IRGC pressure. Six American soldiers are dead in Kuwait. The bombing has produced a leadership vacuum without producing a plan to fill it. Also: what China's 4.5-5% growth target signals about its appetite for risk in a world with a new Iranian power structure.
-      <div class="nav-items">
-        <a href="#lead">The Lead</a>
-        <a href="#also">Also</a>
-        <a href="#arguments">The Arguments</a>
-        <a href="#links">Links</a>
-        <a href="#person">Person to Know</a>
-        <a href="#weather">Weather</a>
-      </div>
-    </nav>
-
-    <!-- THE LEAD -->
-    <section class="article" id="lead" data-edition="morning">
-      <div class="section-label">The Lead</div>
-      <h1 class="article-headline">Iran Chooses a Successor. The Day-After Problem Hasn't Changed.</h1>
-      <p class="article-deck">Five days into Operation Epic Fury, the IRGC is installing the slain Supreme Leader's son. The structural question the strikes were never designed to answer is now unavoidable.</p>
-      <div class="article-body">
-        <p>Five days into the US-Israel military campaign against Iran, the Islamic Republic is doing something the strike planners had no answer for: choosing a new leader. Iran's Assembly of Experts, under pressure from the Islamic Revolutionary Guard Corps, was expected Thursday to announce Mojtaba Khamenei, son of the killed Supreme Leader, as successor, according to Iran International. The formal selection requires ratification by the 88-member Assembly, but the IRGC's weight behind Mojtaba appears to have resolved what had been a contested field. He is 55, not a senior jurist, and his elevation violates the spirit of the velayat-e faqih doctrine that requires clerical qualification and scholarly standing. The pick reflects the IRGC's priority: continuity and control, not religious legitimacy.</p>
-        <p>The war is now in its fifth day. US and Israeli forces have conducted roughly 2,000 strikes since February 28, targeting Iranian nuclear facilities, ballistic missile infrastructure, air defenses, and the country's senior leadership. Supreme Leader Ali Khamenei was killed March 1, the first Supreme Leader killed since the Islamic Republic's founding in 1979. Six US soldiers died when a drone struck a command center in Port Shuaiba, Kuwait. Iran has retaliated: missile strikes hit a residential building in Bahrain and a commercial district in Dubai. Iranian-backed proxy forces in Lebanon and Iraq, significantly degraded since 2024, have not yet mobilized in force.</p>
-        <p>President Trump, speaking Tuesday, said the campaign would "likely take several weeks." Defense Secretary Pete Hegseth said the operation was "not a so-called regime change war," before adding: "the regime sure did change." That formulation captures the gap between stated goal and operational logic that analysts across the spectrum are now examining. The nuclear timeline justification remains contested: Israeli officials argued Iran could enrich uranium to weapons-grade within two weeks of a decision. The UN's nuclear watchdog said Iran was not days or weeks from having atomic weapons at the time the strikes began.</p>
-      </div>
-      <div class="source-note">Primary reporting: <a href="https://www.iranintl.com/en/202603048311" target="_blank">Iran International</a> on the IRGC-backed succession; <a href="https://www.aljazeera.com/news/2026/3/1/who-could-succeed-ayatollah-ali-khamenei-to-lead-iran" target="_blank">Al Jazeera</a> on succession process; AP and Reuters wire reporting on strike operations and casualties.</div>
-    </section>
-
-    <!-- ALSO -->
-    <div class="also-block" id="also">
-      <span class="also-label">Also</span>
-      <div class="also-headline">China Sets 4.5-5% Growth Target Amid Oil Shock and Global Uncertainty</div>
-      <p>Premier Li Qiang presented China's annual government report Thursday at the National People's Congress, setting a 2026 GDP growth target of 4.5-5%, a slight reduction from prior years that reflects the prolonged property slump and, now, the oil price shock from the US-Iran conflict. The number matters beyond economics: China's domestic growth calculus shapes how much geopolitical risk Beijing will absorb in supporting anti-Western partners. Iran's status as a third leg of the Russia-China-Iran alignment has just become structurally uncertain. Beijing's response to the new Iranian power structure, including whether it extends recognition to a Mojtaba-led government, will be a signal worth watching.</p>
-    </div>
-
-    <div class="ornament">&bull; &bull; &bull;</div>
-
-    <!-- THE ARGUMENTS -->
-    <section class="arguments-section" id="arguments">
-      <div class="section-label">The Arguments</div>
-      <h2 class="arguments-headline">Can Air Power Alone Produce a Stable Iran?</h2>
-      <div class="arguments-question">The question analysts are actually fighting about on Day 5</div>
-
-      <div class="arguments-body">
-
-        <p>The facts, from reporting: The US and Israel launched Operation Roaring Lion / Operation Epic Fury on February 28, targeting nuclear facilities, ballistic missile sites, air defenses, and senior Iranian leadership simultaneously. By March 1, Supreme Leader Khamenei was dead: a decapitation strike the US military says took "months, and in some cases, years" of planning. Roughly 2,000 strikes have been conducted through the end of Day 3. Trump has set no public timeline for objectives. The IRGC is intact as an institution, Hezbollah has signaled reluctance to mobilize on Iran's behalf, and Iran has retaliated against Gulf civilian targets. The Strait of Hormuz remains threatened but not closed.</p>
-
-        <div class="position-label">Position 1: The Strategic Logic Holds</div>
-
-        <p>Elliott Abrams, senior fellow at the Council on Foreign Relations, argued at a March 2 CFR briefing that the strikes represent a strategic recalculation that prior administrations lacked the will to execute. "What will clearly emerge from this war," Abrams stated, "is a very, very much changed regime": one without a supreme leader truly supreme as before, without a nuclear program, without functioning missile launchers, and without a navy. The cumulative effect is not regime change in the aspirational, democracy-promotion sense, but strategic neutralization of the most dangerous regional actor.</p>
-
-        <p>The nuclear timeline argument is the load-bearing logic here. Israeli officials told journalists that Iran could have enriched uranium to 90% (weapons grade) within two weeks of a decision to do so. The window for preventing a nuclear Iran through diplomacy had narrowed to implausibility; the Trump-Netanyahu campaign represents the exhaustion of the alternative. Abrams and like-minded analysts add a second-order argument: a strategically neutered Iran removes a critical node in the Russia-China-Iran anti-Western alignment, potentially slowing the drone and missile supply chains that have sustained Russia's war in Ukraine. Max Boot, who called the war "unwarranted and illegal" at the same CFR briefing, nonetheless acknowledged: "That doesn't necessarily mean it'll be unsuccessful."</p>
-
-        <div class="position-label">Position 2: There Is No Endgame</div>
-
-        <p>Gideon Rachman, the Financial Times's chief foreign affairs commentator, wrote March 2 that Trump "has not understood the lessons of past wars for regime change in Iraq and Afghanistan." Rachman's critique is structural, not merely moral: unlike those invasions, where Washington at least deployed ground troops and attempted to construct a successor government, this campaign relies entirely on aviation. If IRGC soldiers decide to lay down their arms, there is, as he puts it, no alternative government or legitimate army to which they can surrender. Trump's calls for Iranians to "take power into their own hands" are, in Rachman's reading, not a strategy but a wish.</p>
-
-        <p>Anne Applebaum, writing on her Substack, makes the governance-failure argument with additional historical texture. The campaign was "launched without explanation, without Congress, without even an attempt to build public support, and above all without a coherent strategy for the Iranian people, and without a plan to help them build a legitimate Iranian state." She notes the pattern: on eight occasions during earlier Iranian protests, Trump encouraged Iranians to take over their institutions and promised American help was "on its way." Then his administration sent the opposite signal. Decapitating a 45-year-old ideological system without a theory of what replaces it is not an oversight; it is the plan, and the plan has no second act. Ray Takeyh, the CFR's senior Iran expert, adds the structural counter to the decapitation thesis: "Iran is not a personalized dictatorship. It's an ideological system with a multilayered cadre." You cannot bomb an ideology out of existence.</p>
-
-        <div class="position-label">Position 3: What Neither Side Is Talking About</div>
-
-        <p>Adam Tooze, writing in Chartbook 436 published March 4, maps the conflict's most underexamined dimension: its agricultural consequences. The Strait of Hormuz carries roughly 20% of global oil trade and a significant share of the world's liquefied natural gas. Gas price shocks propagate to fertilizer production costs, and fertilizer cost spikes hit sub-Saharan African agrarian economies with disproportionate severity, as Tooze documented during the Ukraine war in countries like Kenya, Nigeria, and Cote d'Ivoire. The populations bearing the severest long-term consequences of a prolonged Hormuz disruption have no seat at any table where this war is being decided.</p>
-
-        <p>The second blind spot is theological. The succession crisis is not only a political problem; it is a doctrinal one. The velayat-e faqih principle, clerical guardianship of the state and the ideological core of the Islamic Republic since 1979, requires that the Supreme Leader be a qualified senior jurist with religious standing. Mojtaba Khamenei, installed under IRGC pressure, satisfies neither condition in the eyes of significant portions of Iran's own clerical establishment. Mohsen Kadivar, the dissident Iranian cleric and research professor at Duke University who has spent decades arguing that velayat-e faqih lacks legitimate theological foundation, has not yet written directly on the 2026 succession, but his decades-long framework is exactly the lens through which the regime's credibility crisis must be understood. This is not merely a leadership transition. It is a constitutive crisis for the ideology that has governed 90 million people for 45 years, happening simultaneously with a military campaign that has produced no plan for what any successor ideology might look like.</p>
-
-        <div class="arguments-sources">
-          <strong>Sources:</strong><br>
-          Elliott Abrams and Ray Takeyh at the <a href="https://www.cfr.org/event/media-briefing-what-comes-next-after-us-and-israeli-strikes-iran" target="_blank">CFR Media Briefing, March 2</a> &mdash;
-          Gideon Rachman, "Trump has no realistic plan for Iran's future," <a href="https://www.biznews.com/thought-leaders/fts-gideon-rachman-trump-irans-future" target="_blank">Financial Times via Biznews, March 2</a> &mdash;
-          Anne Applebaum, <a href="https://anneapplebaum.substack.com/p/trump-has-no-plan-for-irans-future" target="_blank">"Trump Has No Plan for Iran's Future," Substack</a> &mdash;
-          Adam Tooze, <a href="https://adamtooze.substack.com/p/chartbook-436-unseasonal-war-how" target="_blank">Chartbook 436, March 4</a> &mdash;
-          Mona Yacoubian, <a href="https://www.csis.org/analysis/regional-reverberations-us-and-israeli-strikes-iran" target="_blank">CSIS, "Regional Reverberations," March 2</a> &mdash;
-          Iran International, <a href="https://www.iranintl.com/en/202603048311" target="_blank">IRGC-backed Mojtaba succession, March 4</a>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- LINKS -->
-    <section class="links-section" id="links">
-      <div class="section-label">Reading</div>
-
-      <div class="link-item">
-        <a href="https://adamtooze.substack.com/p/chartbook-436-unseasonal-war-how" target="_blank">Chartbook 436: The War's Agricultural Consequences &mdash; Adam Tooze</a>
-        <div class="link-quip">The piece on the Iran war that everyone in the food security world is reading, and almost no one in the foreign policy world has opened.</div>
-      </div>
-
-      <div class="link-item">
-        <a href="https://www.csis.org/analysis/regional-reverberations-us-and-israeli-strikes-iran" target="_blank">Regional Reverberations of the US-Israeli Strikes &mdash; Mona Yacoubian, CSIS</a>
-        <div class="link-quip">Best single document for the Gulf angle: why Iran targeted Bahrain and Dubai specifically, and what Tehran was calculating.</div>
-      </div>
-
-      <div class="link-item">
-        <a href="https://www.iranintl.com/en/202603048311" target="_blank">A Wartime Succession: Why the IRGC Backed Mojtaba Khamenei &mdash; Iran International</a>
-        <div class="link-quip">Iran International is doing the most serious English-language reporting on the succession mechanics. This piece explains the internal IRGC logic.</div>
-      </div>
-
-      <div class="link-item">
-        <a href="https://www.cfr.org/event/media-briefing-what-comes-next-after-us-and-israeli-strikes-iran" target="_blank">What Comes Next? &mdash; CFR Media Briefing (Abrams, Boot, Cook, Takeyh)</a>
-        <div class="link-quip">Four of the better-informed Iran analysts in the country, mostly disagreeing, all on the same call. The transcript is worth reading in full.</div>
-      </div>
-
-      <div class="link-item">
-        <a href="https://anneapplebaum.substack.com/p/trump-has-no-plan-for-irans-future" target="_blank">Trump Has No Plan for Iran's Future &mdash; Anne Applebaum</a>
-        <div class="link-quip">Applebaum's piece is sharper on governance failure than Rachman's; she connects the missing plan to the administration's broader record on Iran promises.</div>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- PERSON TO KNOW -->
-    <section class="person-block" id="person">
-      <span class="person-label">Person to Know</span>
-      <div class="person-name">Mohsen Kadivar</div>
-      <p class="person-bio">Kadivar is a mujtahid (a qualified Islamic jurist) and research professor of Islamic studies at Duke University, where he has been in exile since 2007. He was trained in the Shia theological seminaries of Qom, served 18 months in an Iranian prison after the Special Clerical Court convicted him in 1999, and has spent three decades building the most rigorous theological case against velayat-e faqih from within the Shia tradition itself. His core argument: the Guardianship of the Jurist is "neither intuitively obvious, nor rationally necessary": not required by the Quran, not established by tradition, not a requirement of religion. That argument was heterodox during Khamenei's lifetime. With an unqualified successor being installed under IRGC pressure, it is now the framework the Islamic Republic's own clergy will be forced to confront. In the coming weeks, watch for who in Iran's clerical establishment invokes Kadivar's framework, even if they don't name him.</p>
-    </section>
-
-    <!-- WEATHER -->
-    <section class="weather-block" id="weather">
-      <a href="https://kc-8bit-forecast-model.vercel.app" target="_blank" class="weather-icon" title="Full KC forecast">
-        <!-- 8-bit foggy morning sky: warm day with morning fog, evening storms -->
-        <svg width="48" height="48" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-          <!-- sky background -->
-          <rect width="16" height="16" fill="#b8c8d8"/>
-          <!-- sun (partially visible through fog) -->
-          <rect x="10" y="1" width="1" height="1" fill="#e8c840"/>
-          <rect x="11" y="2" width="1" height="1" fill="#e8c840"/>
-          <rect x="12" y="3" width="2" height="2" fill="#f8d850"/>
-          <rect x="11" y="3" width="1" height="2" fill="#f8d850"/>
-          <rect x="13" y="2" width="1" height="1" fill="#e8c840"/>
-          <rect x="13" y="5" width="1" height="1" fill="#e8c840"/>
-          <rect x="11" y="1" width="1" height="1" fill="#e8c840"/>
-          <!-- main cloud -->
-          <rect x="2" y="5" width="2" height="1" fill="#d8d8d8"/>
-          <rect x="1" y="6" width="5" height="1" fill="#d8d8d8"/>
-          <rect x="0" y="7" width="8" height="2" fill="#d0d0d0"/>
-          <rect x="1" y="9" width="7" height="1" fill="#d0d0d0"/>
-          <rect x="3" y="4" width="3" height="1" fill="#e0e0e0"/>
-          <rect x="2" y="4" width="1" height="1" fill="#d8d8d8"/>
-          <!-- fog lines -->
-          <rect x="0" y="11" width="16" height="1" fill="#c8ccd0"/>
-          <rect x="0" y="12" width="10" height="1" fill="#c0c4c8"/>
-          <rect x="2" y="13" width="12" height="1" fill="#b8bcc0"/>
-          <rect x="0" y="14" width="8" height="1" fill="#c0c4c8"/>
-          <rect x="9" y="14" width="7" height="1" fill="#b8bcc0"/>
-        </svg>
-      </a>
-      <div class="weather-text">
-        <div class="weather-temp">65&deg;F <span>Low 57&deg;</span></div>
-        <div class="weather-desc">Foggy through mid-morning. Warm afternoon. Thunderstorms likely after midnight.</div>
-        <a href="https://kc-8bit-forecast-model.vercel.app" target="_blank" class="weather-link">Full 8-bit forecast &rarr;</a>
-      </div>
-    </section>
-
-    <!-- EVENING PLACEHOLDER -->
-    <div class="evening-note" data-edition="morning">
-      Evening edition publishes after 6 PM CT.
-    </div>
-
-    <!-- EVENING CONTENT (placeholder) -->
-    <section data-edition="evening">
-      <div class="section-label">Evening Update</div>
-      <p style="color: var(--text-secondary); font-style: italic; font-size: 15px;">The evening edition has not yet been published. Check back after 6 PM CT.</p>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-main">Written from Kansas City by Chris Beggs</div>
-    <div>Less news. More signal. Every morning.</div>
-  </footer>
-
-  <script>
-    function setEdition(edition) {
-      const body = document.body;
-      const btnMorning = document.getElementById('btn-morning');
-      const btnEvening = document.getElementById('btn-evening');
-      if (edition === 'evening') {
-        body.classList.add('evening-mode');
-        btnEvening.classList.add('active');
-        btnMorning.classList.remove('active');
-      } else {
-        body.classList.remove('evening-mode');
-        btnMorning.classList.add('active');
-        btnEvening.classList.remove('active');
-      }
-    }
-    // Check system time: if after 6pm CT (UTC-6), default to evening
-    const now = new Date();
-    const ctHour = (now.getUTCHours() - 6 + 24) % 24;
-    if (ctHour >= 18) {
-      setEdition('evening');
-    }
-  </script>
+  const btn = document.getElementById('toggle');
+  const why = document.getElementById('why');
+  btn.addEventListener('click', () => {
+    const open = why.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
 
 </body>
 </html>
