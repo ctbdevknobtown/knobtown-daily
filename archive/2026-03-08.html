@@ -158,8 +158,9 @@
     <div class="page">
         <div class="when" id="when">
             <span style="position: relative; display: inline-block;">
-                <a href="#yesterday" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
-                <span id="date-text"></span>
+                <a href="2026-03-07.html" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+                <span id="date-text">Sunday, March 8, 2026</span>
+      <a href="/" class="chevron-fwd" aria-label="Next edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
             </span>
         </div>
         <div class="space"></div>
@@ -183,27 +184,12 @@
         <div style="height: 48px;"></div>
     </footer>
     <script>
-        const now = new Date();
-        const local = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
-        const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-        document.getElementById('date-text').textContent = local.toLocaleDateString('en-US', opts);
-
-        // Link chevron to yesterday's archive
-        const yesterday = new Date(local);
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yStr = yesterday.toISOString().split('T')[0];
-        const chevron = document.querySelector('.chevron');
-        chevron.href = 'archive/' + yStr + '.html';
-        fetch('archive/' + yStr + '.html', { method: 'HEAD' }).then(r => {
-            if (!r.ok) chevron.style.display = 'none';
-        }).catch(() => { chevron.style.display = 'none'; });
-
-        const btn = document.getElementById('toggle');
-        const why = document.getElementById('why');
-        btn.addEventListener('click', () => {
-            const open = why.classList.toggle('open');
-            btn.setAttribute('aria-expanded', open);
-        });
-    </script>
+  const btn = document.getElementById('toggle');
+  const why = document.getElementById('why');
+  btn.addEventListener('click', () => {
+    const open = why.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
 </body>
 </html>
