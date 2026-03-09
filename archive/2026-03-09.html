@@ -35,6 +35,8 @@
         ::selection { background: rgba(26, 26, 26, 0.08); }
         .page { max-width: 580px; margin: 0 auto; padding: 0 24px; flex: 1; }
         .space { height: 56px; }
+
+        /* --- Date with nav --- */
         .when {
             font-size: 0.74rem;
             font-weight: 300;
@@ -59,6 +61,8 @@
         .when .chevron:hover, .when .chevron-fwd:hover { color: var(--ink); text-decoration: none; }
         .when .chevron svg, .when .chevron-fwd svg { width: 14px; height: 14px; }
         .when:hover .chevron, .when:hover .chevron-fwd { opacity: 1; }
+
+        /* --- The story --- */
         .story h1 {
             font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 400;
@@ -106,6 +110,8 @@
             transition: text-decoration-color 0.2s;
         }
         .briefing a:hover { text-decoration-color: var(--ink); }
+
+        /* --- Name at the bottom --- */
         .name { text-align: center; padding: 0 24px 48px; }
         .name button {
             font-family: 'Newsreader', Georgia, serif;
@@ -120,6 +126,8 @@
             transition: color 0.3s;
         }
         .name button:hover { color: var(--ink); }
+
+        /* --- The why --- */
         .why {
             max-height: 0;
             overflow: hidden;
@@ -150,18 +158,19 @@
     <div class="page">
         <div class="when" id="when">
             <span style="position: relative; display: inline-block;">
-                <a href="#yesterday" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
-                <span id="date-text"></span>
+                <a href="2026-03-08.html" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+                <span id="date-text">Monday, March 9, 2026</span>
+      <a href="/" class="chevron-fwd" aria-label="Next edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
             </span>
         </div>
         <div class="space"></div>
         <article class="story">
-            <h1>Trump declared the war "very complete" and called Putin to discuss ending it.</h1>
-            <p>Four days after demanding Iran's unconditional surrender, Trump told reporters the war is "very complete, pretty much" and that the United States is "very far ahead of schedule." He said Iran has "no navy, no communications, no Air Force" and that its drone manufacturing capacity has been destroyed. Separately, Trump spoke by phone with Vladimir Putin, who shared proposals for ending the conflict quickly, according to the Kremlin. The call is the first confirmed diplomatic contact between a major power and the United States about a ceasefire since the war began eleven days ago.</p>
-            <p>The shift in tone tracks the economic damage. Oil closed above $113 a barrel Tuesday, up more than 20 percent in a single day. The Dow fell sharply at the open. South Korea's KOSPI triggered a circuit breaker for the second time in a week. Gas prices are climbing toward $4. The February jobs report showed the US lost 92,000 jobs, and the Fed meets next week with rates at 3.50 to 3.75 percent, caught between energy-driven inflation and a cooling labor market. Trump's "very complete" language arrived the same day his Treasury Secretary publicly warned that prolonged oil disruption posed systemic risk to US financial markets.</p>
-            <p>On the ground, the fighting has not stopped. Iran launched fresh missile and drone attacks on Israel and Gulf states overnight. Israel announced a new wave of strikes on central Iran. Human Rights Watch said it had found evidence that Israel used white phosphorus in residential areas of southern Lebanon, a violation of international humanitarian law. An eighth American servicemember has died. Iran's foreign minister told NBC News his country would not agree to a ceasefire while attacks continued. Whether Trump's call with Putin produces anything real or was simply a pressure release valve for the markets is the question that will define the next 48 hours.</p>
-            <div class="from"><a href="https://www.cnbc.com/2026/03/09/trump-iran-war-end.html" target="_blank" rel="noopener">CNBC: War "very complete"</a>, <a href="https://www.cbsnews.com/live-updates/us-iran-war-israel-stock-prices-down-oil-prices-up-despite-trump-reassurance/" target="_blank" rel="noopener">CBS: Ahead of schedule</a>, <a href="https://thehill.com/homenews/administration/5774808-trump-iran-war-decision-israel/" target="_blank" rel="noopener">The Hill: Mutual decision</a>, <a href="https://www.nbcnews.com/world/iran/irans-foreign-minister-rejects-calls-ceasefire-continue-fighting-rcna262291" target="_blank" rel="noopener">NBC: Iran rejects ceasefire</a>, <a href="https://www.aljazeera.com/news/2026/3/9/what-is-the-us-endgame-in-iran-as-the-war-escalates" target="_blank" rel="noopener">Al Jazeera: Endgame</a></div>
-            <p class="briefing">Elsewhere: <a href="https://www.pbs.org/newshour/world/oil-and-gas-prices-rise-rapidly-as-iran-war-escalates" target="_blank" rel="noopener">Qatar warned that Gulf LNG exports could halt entirely</a> within days if attacks on shipping infrastructure continue. The deep-sea search for Malaysia Airlines Flight MH370, twelve years after it vanished with 239 people aboard, has so far found nothing.</p>
+            <h1>Oil hit $120 a barrel. The war is now an economic crisis.</h1>
+            <p>Brent crude surged to $119.50 a barrel Monday, with WTI touching $118.46, the largest single-day gain since 1988. South Korea's KOSPI fell 8 percent and triggered a circuit breaker, halting trading for twenty minutes. Samsung dropped 10 percent. Japan's Nikkei plunged 7 percent, losing more than 4,000 points. Dow futures fell 800 points before the opening bell. Asia imports 90 percent of the oil that passes through the Strait of Hormuz, and the Strait remains closed. Nearly a fifth of the world's crude oil and natural gas supply is now suspended.</p>
+            <p>The trigger was structural, not tactical. Mojtaba Khamenei's appointment as supreme leader signaled Tehran will not negotiate. Iran launched fresh attacks on Israel and Gulf states Monday and ruled out an immediate ceasefire. Israel announced a new wave of strikes targeting what it called "the infrastructure of the terror regime" in central Iran. The United States ordered non-emergency staff to leave Saudi Arabia for the first time since the war began, citing heightened risks from missile and drone attacks originating in Yemen and Iran. Day ten. No diplomatic channel exists.</p>
+            <p>The economic damage is compounding faster than the military campaign. Gas prices are climbing toward $4 a gallon. The February jobs report showed the US lost 92,000 jobs. The Fed meets next week with rates at 3.50 to 3.75 percent, stuck between inflation driven by energy and an economy that was already cooling. Bond traders are pricing in stagflation. The word has not been used seriously since the 1970s. It is being used seriously now.</p>
+            <div class="from"><a href="https://www.cnbc.com/2026/03/09/nikkei-225-hang-seng-index-kospi-crude-wti-brent-oil-futures-iran-war-gulf-hormuz.html" target="_blank" rel="noopener">CNBC: Asia rout</a>, <a href="https://www.bloomberg.com/news/articles/2026-03-09/iran-signals-no-let-up-as-khamenei-s-hardline-son-becomes-leader" target="_blank" rel="noopener">Bloomberg: Oil surge</a>, <a href="https://www.cnbc.com/2026/03/09/iran-war-updates-oil-brent-wti-crude-110-gulf-gcc-uae-iraq-saudi-arabia-kurds.html" target="_blank" rel="noopener">CNBC: Saudi exit</a>, <a href="https://www.npr.org/2026/03/09/nx-s1-5742307/world-shares-tumble-iran-war" target="_blank" rel="noopener">NPR: Markets</a>, <a href="https://www.aljazeera.com/news/2026/3/8/iran-war-threatens-prolonged-impact-on-energy-markets-as-oil-prices-rise" target="_blank" rel="noopener">Al Jazeera: Energy</a></div>
+            <p class="briefing">Elsewhere: <a href="https://www.aljazeera.com/news/liveblog/2026/3/9/iran-war-live-mojtaba-khamenei-named-supreme-leader-israel-bombs-tehran" target="_blank" rel="noopener">Israel threatened to assassinate Iran's new supreme leader</a>; Arab officials told NBC News that Mojtaba Khamenei now has "an X on his back." A Nepali political party led by a former rapper is set for a landslide parliamentary victory after Gen Z protests ousted the old leadership.</p>
         </article>
     </div>
     <footer class="name">
@@ -175,26 +184,12 @@
         <div style="height: 48px;"></div>
     </footer>
     <script>
-        const now = new Date();
-        const local = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
-        const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-        document.getElementById('date-text').textContent = local.toLocaleDateString('en-US', opts);
-
-        const yesterday = new Date(local);
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yStr = yesterday.toISOString().split('T')[0];
-        const chevron = document.querySelector('.chevron');
-        chevron.href = 'archive/' + yStr + '.html';
-        fetch('archive/' + yStr + '.html', { method: 'HEAD' }).then(r => {
-            if (!r.ok) chevron.style.display = 'none';
-        }).catch(() => { chevron.style.display = 'none'; });
-
-        const btn = document.getElementById('toggle');
-        const why = document.getElementById('why');
-        btn.addEventListener('click', () => {
-            const open = why.classList.toggle('open');
-            btn.setAttribute('aria-expanded', open);
-        });
-    </script>
+  const btn = document.getElementById('toggle');
+  const why = document.getElementById('why');
+  btn.addEventListener('click', () => {
+    const open = why.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
 </body>
 </html>
