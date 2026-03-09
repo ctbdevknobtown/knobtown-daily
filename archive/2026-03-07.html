@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mini news</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #fafaf8;
+      --quiet: rgba(26, 26, 26, 0.4);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e8e8e6;
+        --paper: #0c0c0b;
+        --quiet: rgba(232, 232, 230, 0.4);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      font-size: 19px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      font-family: 'Newsreader', Georgia, serif;
+      color: var(--ink);
+      background: var(--paper);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    ::selection { background: rgba(26, 26, 26, 0.08); }
+    .page {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 24px;
+      flex: 1;
+    }
+    .space { height: 56px; }
+
+    /* --- Date with nav --- */
+    .when {
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: var(--quiet);
+      text-align: center;
+      padding-top: 64px;
+    }
+    .when .chevron, .when .chevron-fwd {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: inline-flex;
+      align-items: center;
+      color: var(--quiet);
+      text-decoration: none;
+      padding: 2px;
+    }
+    .when .chevron { left: -28px; }
+    .when .chevron-fwd { right: -28px; }
+    .when .chevron:hover, .when .chevron-fwd:hover { color: var(--ink); text-decoration: none; }
+    .when .chevron svg, .when .chevron-fwd svg { width: 14px; height: 14px; }
+    .when:hover .chevron, .when:hover .chevron-fwd { opacity: 1; }
+
+    /* --- The story --- */
+    .story h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 32px;
+    }
+    .story p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .story p:last-of-type { margin-bottom: 0; }
+    .from {
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: var(--quiet);
+      margin-top: 16px;
+    }
+    .from a {
+      color: var(--quiet);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .from a:hover {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+    .briefing {
+      font-size: 0.89rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--quiet);
+      margin-top: 32px;
+    }
+    .briefing a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--quiet);
+      transition: text-decoration-color 0.2s;
+    }
+    .briefing a:hover { text-decoration-color: var(--ink); }
+
+    /* --- Name at the bottom --- */
+    .name {
+      text-align: center;
+      padding: 0 24px 48px;
+    }
+    .name button {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: var(--quiet);
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      padding: 0;
+      transition: color 0.3s;
+    }
+    .name button:hover { color: var(--ink); }
+
+    /* --- The why --- */
+    .why {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    .why.open { max-height: 400px; opacity: 1; }
+    .why-inner {
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 32px 24px 0;
+      text-align: center;
+    }
+    .why-inner p {
+      font-size: 0.84rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--quiet);
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 18px; }
+      .when { padding-top: 48px; }
+      .space { height: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="when" id="when">
+    <span style="position: relative; display: inline-block;">
+      <a href="2026-03-06.html" class="chevron" aria-label="Yesterday's edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+      <span id="date-text">Saturday, March 7, 2026</span>
+      <a href="/" class="chevron-fwd" aria-label="Next edition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+    </span>
+  </div>
+
+  <div class="space"></div>
+
+  <article class="story">
+    <h1>Russia is feeding Iran intelligence on American forces. The war enters week two.</h1>
+
+    <p>Russia is providing Iran with real-time intelligence on the locations and movements of American troops, ships, and aircraft, according to multiple US officials. It is the first indication that Moscow has sought to directly involve itself in the conflict. The intelligence sharing reportedly includes satellite imagery and signals intercepts. The White House has not publicly responded. The disclosure raises the stakes considerably: a nuclear-armed state is now actively supporting the other side of a war the United States is fighting.</p>
+
+    <p>Day eight. CENTCOM says it has struck more than 3,000 targets in Iran and destroyed 43 Iranian warships since February 28. Iranian ballistic missile launches have fallen 90 percent from day one, and drone attacks are down 83 percent. But Iran is still fighting. Five ballistic missiles were fired at Israel overnight Saturday. Fresh drone and missile attacks hit Saudi Arabia, Qatar, Bahrain, and the UAE Saturday morning. Trump posted "today Iran will be hit very hard" on Truth Social. At least 1,332 people have been killed across Iran, including 181 children. More than 200 have been killed in Lebanon. Eleven Israelis and six US servicemembers have died. The Strait of Hormuz remains closed.</p>
+
+    <p>The economic fallout is compounding. Oil closed Friday above $90 a barrel, its biggest weekly gain since futures trading began in 1983. Gas jumped to $3.32 a gallon and is still climbing. The February jobs report showed the US lost 92,000 jobs, the worst month since the pandemic. Unemployment is 4.4 percent. The Fed meets March 17-18 and is expected to hold rates at 3.50 to 3.75 percent, but odds of a June cut have risen sharply. Bond yields fell. The word on Wall Street is stagflation: rising energy prices on top of a cooling labor market, with the central bank stuck in the middle.</p>
+
+    <div class="from"><a href="https://www.aljazeera.com/news/2026/3/7/tehran-pounded-in-week-two-of-us-israel-war-iran-targets-israel" target="_blank" rel="noopener">Al Jazeera: Day 8</a>, <a href="https://www.washingtonpost.com/national/2026/03/07/iran-israel-us-latest-march-07-2026/0309fd20-19e7-11f1-aef0-0aac8e8e94db_story.html" target="_blank" rel="noopener">WaPo: Latest</a>, <a href="https://www.cnn.com/2026/03/06/middleeast/us-israel-iran-war-what-we-know-intl-hnk" target="_blank" rel="noopener">CNN: Day 8</a>, <a href="https://www.golocalprov.com/news/5-big-news-stories-overnight-saturday-march-7-2026" target="_blank" rel="noopener">GoLocal: Overnight</a>, <a href="https://www.aljazeera.com/economy/2026/3/6/us-job-market-stalls-unemployment-rate-rises-before-fed-decision" target="_blank" rel="noopener">Al Jazeera: Jobs</a></div>
+
+    <p class="briefing">Elsewhere: <a href="https://www.aljazeera.com/news/2026/3/7/iran-war-what-is-happening-on-day-eight-of-us-israel-attacks" target="_blank" rel="noopener">Britain, France, and Spain are deploying military assets</a> to protect allied interests in the region, with British counter-drone helicopters arriving in Cyprus on Friday. <a href="https://www.hancockwhitney.com/insights/markets-and-economic-updates-for-march-2026-geopolitics-inflation-and-market-shifts" target="_blank" rel="noopener">A partial government shutdown</a> is affecting parts of the Department of Homeland Security and federal workers as Congress failed to pass a funding extension before the weekend. India and New Zealand play the T20 World Cup final Sunday in Ahmedabad.</p>
+  </article>
+</div>
+
+<footer class="name">
+  <div class="space"></div>
+  <button id="toggle" aria-expanded="false">mini news</button>
+  <div class="why" id="why">
+    <div class="why-inner">
+      <p>the news. but mini. no feed, no algorithm, no tracking, no ads.</p>
+    </div>
+  </div>
+  <div style="height: 48px;"></div>
+</footer>
+
+<script>
+  const btn = document.getElementById('toggle');
+  const why = document.getElementById('why');
+  btn.addEventListener('click', () => {
+    const open = why.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
+</body>
+</html>
